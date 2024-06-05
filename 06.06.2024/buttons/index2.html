@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="a2.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="h_wrapper">
+            <h2 style="width: 100%; text-align: center;">Header</h2>
+        </div>
+        <div id="m_wrapper">
+            <main>
+                <a href="https://google.com">
+                    <div id="trigger" style="background-color: red;">
+                        lalke
+                    </div>   
+                </a>       
+                <script type="module">
+                    import * as vigl from "./button.js";
+                    window.addEventListener("load", () => {
+                        vigl.initGL();
+                        const draw = () => {
+                            vigl.render();
+
+                            window.requestAnimationFrame(draw);
+                        }
+                        draw();
+                    });
+                </script>
+            </main>
+            <aside style="display: flex; flex-direction: column; padding: 20% 0;">
+                <input type="button" name="button" id="button" style="background-color: aliceblue;" value="сделать хорошо">                    
+            </aside>
+        </div>  
+        <div id="f_wrapper">
+            <i style="width: 100%; text-align: center;">footer</i>
+        </div>
+    </div>
+</body>
+</html>
