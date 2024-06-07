@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test_button/a.css">
+</head>
+<body>
+
+    <!-- TEST TWO BUTTON CLICK --> 
+    <script type="module">
+        import { changeBKC as cvk} from "./main.js";
+        /*
+            // first attempt (done).
+
+            let b1 = document.querySelector("#b1");
+            let b2 = document.querySelector("#b2");
+
+            b1.addEventListener("click", () => {cvk("b1")}); 
+            b2.addEventListener("click", () => {cvk("b2")}); 
+        */
+
+        
+        console.log("imported");
+    </script>
+
+    <!-- TEST SECOND -->
+    <script>
+        // second attempt (done).
+        function getID(a) {
+            return a.target.attributes.id;
+        }
+        document.addEventListener("click", (ad) => {
+            let id = getID(ad);
+            if (id.value == "b1") {
+                document.body.style.backgroundColor = 'red';
+            }
+            else if (id.value == 'b2') {
+                document.body.style.backgroundColor = 'green';
+            }
+        });
+    </script>
+
+    <!-- TEST MY EVENT -->
+    <script type="module">
+        // import hidden struct
+        import def from "./main.js";
+
+        console.log(`hideStatus: ${def.hidden}`);
+
+        // hide button function
+        function hideB(target) {
+            target.style.opacity = "0";
+        }
+        
+        // see button function
+        function seeB(target) {
+            target.style.opacity = "1";
+        }
+
+        // event for click function
+        function hide(button) {
+            let event = new CustomEvent("Boris-loh", {cancelable: true});
+            if (button.target.dispatchEvent(event)) {
+                alert("Canceled by user");
+            }
+            else {
+                if (!def.hidden) {
+                    hideB(button.target);
+                    def.hidden = !def.hidden;
+                }
+                else {
+                    seeB(button.target);
+                    def.hidden = !def.hidden;
+                }
+            }
+        }    
+
+        // custom event test (check up function)
+        document.getElementById("b2").addEventListener("Boris-loh", (event) => {
+            if (!def.hidden) {
+                if (confirm("Do you wanna hide button?")) {
+                    event.preventDefault();
+                }
+            }
+            else {
+                if (confirm("Do you wanna see button?")) {
+                    event.preventDefault();
+                }
+            }
+        });
+
+        let button = document.getElementById("b2");
+        button.addEventListener("click", (event) => hide(event));
+    </script>
+    <input type="button" value="click me" id="b1">
+    <input type="button" value="click me" id="b2">
+</body>
+</html>
