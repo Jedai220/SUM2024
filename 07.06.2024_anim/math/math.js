@@ -1,20 +1,21 @@
 // import vector and matrix file
-import {vec3Add} from "./vec.js" 
-import {newMat4} from "./mat4.js"
+import vec3 from './vec.js' 
+import mat4 from './mat4.js'
+export {Vec3}
+export {Mat4}
 
-// matrix and vector handle description type
-class myMath {
-    newVec3 = () => {vec3Add()};
-    newMat4 = () => {newMat4()}
-}
+let def3 = new vec3;
+let def4 = new mat4;
+
+function Vec3() {def3.newVec3(arguments)}; 
+function Mat4() {def4.newMat4(arguments)}; 
 
 // matrix and vector variable type
-let math = new myMath();
-let vector = vec3Add();
-let matrix = newMat4();
+let vector = Vec3();
+let matrix = Mat4();
 
 // matrix prototype 4 x 4 scale function
-myMath.prototype.mat4Scale = (a) => {
+mat4.prototype.mat4Scale = (a) => {
     try {
       return newMat4(a.vec3.x, 0, 0, 0, 0, a.vec3.y, 0, 0, 0, 0, a.vec3.z, 0, 0, 0, 0, 1); 
     } catch (error) {
@@ -23,7 +24,7 @@ myMath.prototype.mat4Scale = (a) => {
 }  // end of 'mat4Scale' prototype function
 
 // matrix prototype 4 x 4 rotate function
-myMath.prototype.rotateA = (v, a) => {
+mat4.prototype.rotateA = (v, a) => {
 
     let D2R = (d) => {
         return d * 3.141592 / 180;
@@ -45,7 +46,7 @@ myMath.prototype.rotateA = (v, a) => {
 } // end of 'rotateA' function
 
 // matrix view prototype function
-myMath.prototype.matView = (l, a, u) => {
+mat4.prototype.matView = (l, a, u) => {
     try {
         let Dir = vector.vec3Norm(vector.vec3Sub(a, l)),
             Right = vector.vec3Norm(vector.vec3Cross(Dir, u)),
@@ -58,12 +59,12 @@ myMath.prototype.matView = (l, a, u) => {
 } // end of 'matView' function
 
 // matrix view prototype function
-myMath.prototype.matOrtho = (l, r, b, t, n, f) => {
+mat4.prototype.matOrtho = (l, r, b, t, n, f) => {
     return newMat4(2 / (r - l), 0, 0, 0, 0, 2 / (t - b), 0, 0, 0, 0, -2 / (f - n), 0, 0, 0, -(f + n) / (f - n), 1);
 } // end of 'matOrtho' function
 
 // matrix view prototype function
-myMath.prototype.matFrustum = (l, r, b, t, n, f) => {
+mat4.prototype.matFrustum = (l, r, b, t, n, f) => {
     try {
         return newMat4(2 * n / (r - l), 0, 0, 0,
                                 0, 2 * n/ (t - b), 0, 0,

@@ -1,17 +1,16 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! HAVE ERROR IN MATH SYSTEM NOW FIXING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \\
 
-
-
-
-
-
-import * as all from "./math/math.js"
+import {Vec3} from "./math/math.js";
+import {Mat4} from "./math/math.js";
 
 // gl variable
 let
   canvas,
   gl,
   timeLoc;    
+
+// Vector and matrix operations variable
+let vec3 = Vec3(), mat4 = Mat4();
 
 //draw variable
 let W = 450, // draw screen width
@@ -20,10 +19,10 @@ let
   projSize = 0.1,     /* Project plane fit square */
   projDist = 0.1,     /* Distance to project plane from viewer (near) */
   projFarClip = 300;  /* Distance to project far clip plane (far) */
-let matProj = all.default.mv.mat4.mat.newMat4(), 
-    matVP   = all.default.mv.mat4.mat.newMat4(),
-    matView = all.default.mv.mat4.mat.newMat4(),
-    matW = all.default.mv.mat4.mat.newMat4(); 
+let matProj = Mat4(),  
+    matVP   = Mat4(),
+    matView = Mat4(),
+    matW = Mat4();
     
 
 // OpenGL initialization function  
@@ -44,7 +43,6 @@ export function initGL() {
  
   void main( void )
   {
-    gl_Position = MatrWVP * vec4(InPosition, 1.0);
   }
   `;
   let fs_txt =
@@ -57,22 +55,6 @@ export function initGL() {
  
   void main( void )
   {
-    vec2 Z = DrawPos;
-    vec2 C = vec2(0.35 + 0.05 * sin(2.0 * Time * 1.3), 0.35 + 0.05 * sin(2.0 * Time * 0.8));
-    float n = 0.0;
-
-    while (n < 250.0 && length(Z) < 2.0)
-    {
-      Z = vec2(Z.x * Z.x - Z.y * Z.y, 2.0 * Z.x * Z.y) + C;
-      n++;
-    }
-
-    if (n < 2.0)
-      OutColor = vec4(0.0);
-    else if (n > 2.0 && n < 0.5)
-      OutColor = vec4(n * 40.0, n / 30.0, n * (20.0 + 5.0 * abs(sin(Time + 3.0))), 0.5);
-    else
-      OutColor = vec4(n * 40.0, n / 30.0, n * (20.0 + 5.0 * abs(sin(Time + 3.0))), 1.0);
   }
   `;
   let
@@ -104,11 +86,11 @@ export function initGL() {
   // Send wvp matrix to shader
   let matLoc = gl.getAttribLocation(prg, "MatrWVP");
   if (matLoc != -1) {
-    gl.uniformMatrix4fv(matLoc, false, new Float32Array(all.default.mv.mat4.mat.mat4MulMat4(matW, matVP)), 0, 16);
+    gl.uniformMatrix4fv(matLoc, false, new Float32Array(mat4.mat4MulMat4(matW, matVP)), 0, 16);
   }
 
   // View matrix create and set proj matrix 
-  matView = all.default.mv.matView(all.default.mv.vec.vec.newVec3(5.0, 5.0, 5.0), all.default.mv.vec.vec.newVec3(0.0, 0.0, 0.0), all.default.mv.vec.vec.newVec3(0.0, 1.0, 0.0))
+  matView = mat4.matView(Vec3(5.0, 5.0, 5.0), Vec3(0.0, 0.0, 0.0), Vec3(0.0, 1.0, 0.0))
   projSet();
 
   // Uniform data

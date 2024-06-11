@@ -1,5 +1,5 @@
 /* 3-d vector handle description type */
-class vec3{
+export default class vec3{
     constructor (a, b, c) {
         this.vec3 = {x: a, y: b, z: c, 0: a, 1: b, 2: c};
         this.isVec3 = true;
@@ -10,7 +10,7 @@ class vec3{
 let def3 =  new vec3;
 
 // 3d vector create prototype function
-function newVec3(a, b, c) {
+vec3.prototype.newVec3 = (a, b, c) => {
     return new vec3(a, b, c);
 } // end of 'newVec3' prototype function
 
@@ -91,9 +91,5 @@ vec3.prototype.vec3Cross = (a, b) => {
 
     return def3.newVec3(a.vec3.y * b.vec3.z - a.vec3.z * b.vec3.y, -(a.vec3.x * b.vec3.z - a.vec3.z * b.vec3.x), a.vec3.x * b.vec3.y - a.vec3.y * b.vec3.x);
 } // end of 'vec3Cross' prototype function
-
-let vec = def3;
-
-export {vec3Add};
 
 console.log("vec.js complete");

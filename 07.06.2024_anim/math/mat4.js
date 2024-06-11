@@ -1,5 +1,5 @@
 // 4 x 4 matrix handle description type
-class mat4 {
+export default class mat4 {
     constructor (a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4, d1, d2, d3, d4){
         this.isMatrix = true;
         if (a1 == undefined || a2 == undefined || a3 == undefined || a4 == undefined || b1 == undefined || b2 == undefined || b3 == undefined || b4 == undefined || c1 == undefined || c2 == undefined || c3 == undefined || c4 == undefined || d1 == undefined || d2 == undefined || d3 == undefined || d4 == undefined) {
@@ -38,13 +38,12 @@ class mat4 {
 /** Local matrix function description **/
 
 // create matrix function
-function newMat4() {
-    let a = arguments[0];
-    console.log(a[0]);
-    if (typeof arguments[0] == 'undefined') {
+mat4.prototype.newMat4 = () => {
+    try {
+        return new mat4(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15]);
+    } catch (err) {
         return localMatrixIdentity();
     }
-    return new mat4(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15]);
 } // end of 'localMat4' function
 
 // multiple matrix function
@@ -256,7 +255,5 @@ function localMat4RotateY (a) {
 
     return localMat4(c, 0 ,-s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1);
 } //end of 'localMat4RotateY' function
-
-export {newMat4};
 
 console.log("mat4.js completed");

@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
 
 body {
     padding: 0px 5%;
+}
+
+.main-font {
+    font-family: "Rubik Bubbles", system-ui;
+    font-weight: 400;
+    font-style: normal;   
+
+    font-size: 70px;
 }
 
 a {
@@ -52,11 +61,11 @@ a:hover {
 }
 
 .CGSGButton {
-    background-color: cadetblue;
+    background-color: #eee0f0;
     border: solid 1px black;
-    border-radius: 8px;
-    box-shadow: inset 4px 4px 12px black,
-                6px 0px 20px black;
+    border-radius: 80px;
+    box-shadow: inset 4px 4px 12px #bf72bc,
+                6px 0px 20px #bf72bc;
     width: 75%;
     height: 80%;
     padding-top: 150px;
@@ -73,7 +82,7 @@ a:hover {
 }
 
 #h_wrapper {
-    background-color: rgb(0, 80, 255);    
+    background-color: rgb(190, 20, 50);    
     width: 100%;
     border-width: 1px;
     border-radius: 8px;
@@ -98,7 +107,7 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 215, 0);
+    background-color: rgb(255, 120, 100);
 }
 
 nav>ul {
@@ -118,9 +127,14 @@ nav>ul>a {
     border: 1px solid black;
     border-width: 1px;
     border-radius: 8px;
-    background-color: coral;
+    background-color: rgb(250, 200, 90, 0.4);
 }
 
 #main_wrapper {
     padding: 2% 10%;
+    background-color: pink;
+}
+
+body {
+    background-color: pink;
 }
