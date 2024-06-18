@@ -1,6 +1,5 @@
 console.log("test passed!");
 const ws = new WebSocket("ws://localhost:8000");
-
 let counter = 0;
 
 $("#message_sender").prop("disabled", true);
@@ -8,6 +7,7 @@ $("#message_sender").prop("disabled", true);
 $("#message_sender").val(
   `you must click 10 hamster point to writing a messages.\nNow you click 0 times`
 );
+
 $("input").click((e) => {
   if (counter < 10) {
     $("#message_sender").val(
@@ -47,19 +47,22 @@ $("input").click((e) => {
     }
     return;
   } else {
-    ws.send(`{"_type": "message", _info: "${$("#message_sender").val()}"}`);
-    ws.send(`user: ${$("#message_inputer").val()}`);
+    ws.send(`${$("#message_inputer").val()} __________  ${$('#message_sender').val()}`);
     $("#message_sender").css({ border: "pink dotted" });
     $("#message_inputer").css({ border: "pink dotted" });
   }
 });
 
 ws.onmessage = (msg) => {
-    // if (msg.data == `I LOVE SOCKET AND YOU TO BECAUSE I FEEL WEBSOCKET IN MY USEFOOL HEAD0`) {
-    //     alert("0");
-    // }
-    if (msg._type == "message") {
-        $("#message_wrapper").append(`<p>${msg._info}</p>`);
-    }
-    console.log("I give message!");
+  if (msg.data == "__ADMIN: CLEAR ALL CHAT") {
+    $('.userTo').remove();
+    $('.messageTo').remove();
+    return;
+  }
+
+  let fullMessage = msg.data.split(" __________ ");
+  if (fullMessage[0] == 'clear' && fullMessage[1] == 'clear') {
+    ws.send('___clear all chat');
+  }
+  $("#message_wrapper").append(`<div class="message"><p class="userTo">${fullMessage[0]}</p><p class="messageTo">${fullMessage[1]}</p> <br><br><br>`);
 }

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&display=swap');
 
 * {
   padding: 0;
@@ -92,5 +93,30 @@ input {
     min-height: 30px;
     max-width: 540px;
     min-width: 540px;
-    padding: 0;
+    padding: 0 0 0 10px;
+}
+
+.userTo {
+  font-size: 12px;
+}
+
+.messageTo {
+  font-size: 24px;
+}
+
+#header {
+  border: 3px solid #DF90AA;
+  border-radius: 25px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 28px;
+  z-index: 0;
+  width: 400px;
+  align-self: center;
+  font-family: "Playwrite NG Modern", cursive;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  box-shadow: inset 1px 1px 10px black;
+  text-shadow: 1px 1px 5px black;
 }

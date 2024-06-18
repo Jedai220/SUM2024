@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COW-STOW</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="shortcut icon" href="./image/cow_logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./index.js" type="module"></script>
+  </head>
+  <body>
+    <div id="delete_it"></div>
+    <div id="all_wrapper" class="wrapper">
+      <header class="wrapper">
+        <div id="all_header" class="wrapper">
+          <div id="header_img">
+            <img src="./image/def_cow.png" alt="cow_stow logo" />
+          </div>
+          <div id="header_content" class="wrapper">
+            <p>COW-STOW</p>
+          </div>
+          <div id="guide_case">
+            <button id="guide_button">!!!GUIDE!!!</button>
+          </div>
+        </div>
+      </header>
+      <aside class="wrapper">
+        <ul id="button_list">
+          <li>
+            <button id="buy_cow" class="tabLink">
+              <p>Buy cow</p>
+            </button>
+          </li>
+          <li>
+            <button id="buy_bust" class="tabLink">
+              <p>Buy busters</p>
+            </button>
+          </li>
+          <li>
+            <button id="buy_earn" class="tabLink">
+              <p>Earn money</p>
+            </button>
+          </li>
+        </ul>
+      </aside>
+      <main class="wrapper">
+        <article class="tabContent" id="earn" style="display: none">
+          <div id="money_per_minute" class="current_text">
+            <div>
+              <p id="money_per_min_text">Inflows per min:</p>
+            </div>
+          </div>
+          <div id="money_current" class="current_text">
+            <div>
+              <p id="money_current_text">Current money:</p>
+            </div>
+          </div>
+          <div id="money_per_tap" class="current_text">
+            <div>
+              <p id="money_per_tap_text">Money per tap:</p>
+            </div>
+          </div>
+          <div id="earn_wrapper">
+            <button id="earn_button"></button>
+          </div>
+          <div id="cow_name"></div>
+        </article>
+        <article id="buy" class="tabContent" style="display: none"></article>
+        <article id="bust" class="tabContent" style="display: none"></article>
+      </main>
+      <footer class="wrapper">
+        <ul id="footer_list">
+          <a target="_blank" href="https://github.com/Jedai220">My github</a>
+        </ul>
+      </footer>
+    </div>
+  </body>
+</html>
