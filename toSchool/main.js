@@ -7,8 +7,13 @@ app.use(express.static("client"));
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
+
 wss.on("connection", (ws) => {
-  ws.send("you connected");
+  ws.on("message", (msg) => {
+    for (let client of wss.clients) {
+      client.send(msg.toString());
+    }
+  });
 });
 
 const port = "8080",

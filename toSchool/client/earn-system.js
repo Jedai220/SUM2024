@@ -1,12 +1,12 @@
 if (
-  localStorage.getItem("currentMoneyPerTap") == undefined ||
-  localStorage.getItem("currentMoney") == undefined ||
-  localStorage.getItem("currentCowLevel") == undefined ||
-  localStorage.getItem("currentInflows") == undefined ||
-  localStorage.getItem("currentMoneyPerTap") == null ||
-  localStorage.getItem("currentMoney") == null ||
-  localStorage.getItem("currentCowLevel") == null ||
-  localStorage.getItem("currentInflows") == null
+  localStorage.getItem("currentMoneyPerTap") == "undefined" ||
+  localStorage.getItem("currentMoney") == "undefined" ||
+  localStorage.getItem("currentCowLevel") == "undefined" ||
+  localStorage.getItem("currentInflows") == "undefined" ||
+  localStorage.getItem("currentMoneyPerTap") == "null" ||
+  localStorage.getItem("currentMoney") == "null" ||
+  localStorage.getItem("currentCowLevel") == "null" ||
+  localStorage.getItem("currentInflows") == "null"
 ) {
   localStorage.setItem("currentMoneyPerTap", 1);
   localStorage.setItem("currentMoney", 0);
