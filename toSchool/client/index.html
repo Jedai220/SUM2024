@@ -15,7 +15,11 @@
       <header class="wrapper">
         <div id="all_header" class="wrapper">
           <div id="header_img">
-            <img id="header_img_art" src="./image/def_cow.png" alt="cow_stow logo" />
+            <img
+              id="header_img_art"
+              src="./image/def_cow.png"
+              alt="cow_stow logo"
+            />
           </div>
           <div id="header_content" class="wrapper">
             <p id="cow_stow">COW-STOW</p>
@@ -50,8 +54,13 @@
             </li>
           </ul>
         </aside>
+        <!--! EARN MONEY DESCRIPTION  -->
         <main class="wrapper">
           <article class="tabContent" id="earn" style="display: none">
+            <div id="farmer_earn"><p style="margin-top: 158px;" id="farm_level"></p></div>
+            <div id="bucket_earn"><p style="margin-top: 158px;" id="buck_level"></p></div>
+            <div id="popularity_earn"><p style="margin-top: 158px;" id="pop_level"></p></div>
+            <div id="hay_earn"><p style="margin-top: 158px;" id="hay_level"></p></div>
             <div id="money_per_minute" class="current_text">
               <div>
                 <p id="money_per_min_text">Inflows per min:</p>
@@ -72,6 +81,7 @@
             </div>
             <div id="cow_name"></div>
           </article>
+          <!--! COW BUY DESCRIPTION  -->
           <article id="buy" class="tabContent">
             <div id="default_cow_buy">
               <button
@@ -80,7 +90,9 @@
                 style="align-self: center"
               ></button>
               <p style="color: burlywood; font-size: 24px">Price: free</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 1</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="def_cl">1</span>
+              </p>
               <p style="color: burlywood; font-size: 24px">Name: default cow</p>
             </div>
             <div id="udder_cow_buy">
@@ -89,8 +101,10 @@
                 id="udder_cow_buy_art"
                 style="align-self: center"
               ></button>
-              <p style="color: burlywood; font-size: 24px">Price: 250</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 3</p>
+              <p style="color: burlywood; font-size: 24px">Price: 400</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="ud_cl">3</span>
+              </p>
               <p style="color: burlywood; font-size: 24px">Name: udder cow</p>
             </div>
             <div id="radioactive_cow_buy">
@@ -99,9 +113,13 @@
                 id="buy_radioactive_cow_art"
                 style="align-self: center"
               ></button>
-              <p style="color: burlywood; font-size: 24px">Price: 1000</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 10</p>
-              <p style="color: burlywood; font-size: 24px">Name: radioactive cow</p>
+              <p style="color: burlywood; font-size: 24px">Price: 3000</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="rad_cl">10</span>
+              </p>
+              <p style="color: burlywood; font-size: 24px">
+                Name: radioactive cow
+              </p>
             </div>
             <div id="pig_cow_buy">
               <button
@@ -109,8 +127,10 @@
                 id="buy_pig_cow_art"
                 style="align-self: center"
               ></button>
-              <p style="color: burlywood; font-size: 24px">Price: 4500</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 15</p>
+              <p style="color: burlywood; font-size: 24px">Price: 8200</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="pig_cl">15</span>
+              </p>
               <p style="color: burlywood; font-size: 24px">Name: pig-cow</p>
             </div>
             <div id="mushroom_cow_buy">
@@ -119,9 +139,13 @@
                 id="buy_mushroom_cow_art"
                 style="align-self: center"
               ></button>
-              <p style="color: burlywood; font-size: 24px">Price: 9000</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 30</p>
-              <p style="color: burlywood; font-size: 24px">Name: mushroom cow</p>
+              <p style="color: burlywood; font-size: 24px">Price: 15000</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="mus_cl">30</span>
+              </p>
+              <p style="color: burlywood; font-size: 24px">
+                Name: mushroom cow
+              </p>
             </div>
             <div id="ice_cow_buy">
               <button
@@ -129,8 +153,10 @@
                 id="buy_ice_cow_art"
                 style="align-self: center"
               ></button>
-              <p style="color: burlywood; font-size: 24px">Price: 16000</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 50</p>
+              <p style="color: burlywood; font-size: 24px">Price: 30000</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="ice_cl">50</span>
+              </p>
               <p style="color: burlywood; font-size: 24px">Name: ice cow</p>
             </div>
             <div id="kanabis_cow_buy">
@@ -139,8 +165,10 @@
                 id="buy_kanabis_cow_art"
                 style="align-self: center"
               ></button>
-              <p style="color: burlywood; font-size: 24px">Price: 27030</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 80</p>            
+              <p style="color: burlywood; font-size: 24px">Price: 50000</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="kan_cl">80</span>
+              </p>
               <p style="color: burlywood; font-size: 24px">Name: old cow-ban</p>
             </div>
             <div id="miku_cow_buy">
@@ -149,8 +177,10 @@
                 id="buy_miku_cow_art"
                 style="align-self: center"
               ></button>
-              <p style="color: burlywood; font-size: 24px">Price: 40000</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 100</p>
+              <p style="color: burlywood; font-size: 24px">Price: 100000</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="mik_cl">100</span>
+              </p>
               <p style="color: burlywood; font-size: 24px">Name: miku cow</p>
             </div>
             <div id="mustafa_cow_buy">
@@ -159,17 +189,243 @@
                 id="buy_mustafa_cow_art"
                 style="align-self: center"
               ></button>
-              <p style="color: burlywood; font-size: 24px">Price: 60000</p>
-              <p style="color: burlywood; font-size: 24px">Money per click: 200</p>
+              <p style="color: burlywood; font-size: 24px">Price: 500000</p>
+              <p style="color: burlywood; font-size: 24px">
+                Money per click: <span id="mus2_cl">200</span>
+              </p>
               <p style="color: burlywood; font-size: 24px">Name: hamster-cow</p>
             </div>
           </article>
-          <article id="bust" class="tabContent"></article>
+          <!--! BUSTER DESCRIPTION  -->
+          <article id="bust" class="tabContent">
+            <div id="farmer_buy">
+              <button
+                class="buy_bust_uni_class"
+                id="buy_farmer_art"
+                style="align-self: center"
+              ></button>
+              <p
+                id="farmer_price"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Price: 200
+              </p>
+              <p
+                id="farmer_type"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current money multiple: 1
+              </p>
+              <p
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Name: farmer
+              </p>
+              <p
+                id="farmer_level"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current level:
+              </p>
+              <p
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Max level: 3
+              </p>
+            </div>
+            <div id="bucket_buy">
+              <button
+                class="buy_bust_uni_class"
+                id="buy_bucket_art"
+                style="align-self: center"
+              ></button>
+              <p
+                id="bucket_price"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Price: 100
+              </p>
+              <p
+                id="bucket_type"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current money multiple: 1
+              </p>
+              <p
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Name: bucket
+              </p>
+              <p
+                id="bucket_level"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current level:
+              </p>
+              <p
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Max level: 3
+              </p>
+            </div>
+            <div id="popularity_buy">
+              <button
+                class="buy_bust_uni_class"
+                id="buy_popularity_art"
+                style="align-self: center"
+              ></button>
+              <p
+                id="popularity_price"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Price: 100
+              </p>
+              <p
+                id="popularity_type"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current money multiple: 1
+              </p>
+              <p
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Name: popularity
+              </p>
+              <p
+                id="popularity_level"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current level:
+              </p>
+              <p
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Max level: 3
+              </p>
+            </div>
+            <div id="hay_buy">
+              <button
+                class="buy_bust_uni_class"
+                id="buy_hay_art"
+                style="align-self: center"
+              ></button>
+              <p
+                id="hay_price"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Price: 100
+              </p>
+              <p
+                id="hay_type"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current money multiple: 1
+              </p>
+              <p
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Name: hay
+              </p>
+              <p
+                id="hay_level"
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current level:
+              </p>
+              <p
+                style="
+                  color: burlywood;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Max level: 3
+              </p>
+            </div>
+          </article>
         </main>
-        </div>
+      </div>
       <footer class="wrapper">
         <ul id="footer_list">
-          <a id="footer_con" target="_blank" href="https://github.com/Jedai220">My github</a>
+          <a id="footer_con" target="_blank" href="https://github.com/Jedai220"
+            >My github</a
+          >
         </ul>
       </footer>
     </div>

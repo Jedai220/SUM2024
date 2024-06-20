@@ -24,9 +24,9 @@ export function onClickBuyCow(event) {
     return;
   }
   if (event.currentTarget.getAttribute("id") == "buy_miku_cow_art") {
-    checkBuyingAbility(event, "buy_miku_cow_art", "miku cow", 40000, 100, 8);
+    checkBuyingAbility(event, "buy_miku_cow_art", "miku cow", 100000, 100, 8);
   } else if (event.currentTarget.getAttribute("id") == "udder_cow_buy_art") {
-    checkBuyingAbility(event, "udder_cow_buy_art", "udder cow", 250, 3, 2);
+    checkBuyingAbility(event, "udder_cow_buy_art", "udder cow", 400, 3, 2);
   } else if (
     event.currentTarget.getAttribute("id") == "buy_radioactive_cow_art"
   ) {
@@ -34,34 +34,34 @@ export function onClickBuyCow(event) {
       event,
       "buy_radioactive_cow_art",
       "radioactive cow",
-      1000,
+      3000,
       10,
       3
     );
   } else if (event.currentTarget.getAttribute("id") == "buy_pig_cow_art") {
-    checkBuyingAbility(event, "buy_pig_cow_art", "pig cow", 4500, 15, 4);
+    checkBuyingAbility(event, "buy_pig_cow_art", "pig cow", 8200, 15, 4);
   } else if (event.currentTarget.getAttribute("id") == "buy_mushroom_cow_art") {
     checkBuyingAbility(
       event,
       "buy_mushroom_cow_art",
       "mushroom cow",
-      9000,
+      15000,
       30,
       5
     );
   } else if (event.currentTarget.getAttribute("id") == "buy_ice_cow_art") {
-    checkBuyingAbility(event, "buy_ice_cow_art", "ice cow", 16000, 50, 6);
+    checkBuyingAbility(event, "buy_ice_cow_art", "ice cow", 30000, 50, 6);
   } else if (event.currentTarget.getAttribute("id") == "buy_kanabis_cow_art") {
     checkBuyingAbility(
       event,
       "buy_kanabis_cow_art",
       "old cow-ban",
-      27030,
+      50000,
       80,
       7
     );
   } else if (event.currentTarget.getAttribute("id") == "buy_mustafa_cow_art") {
-    checkBuyingAbility(event, "buy_mustafa_cow_art", "hamster-cow", 60000, 200, 9)
+    checkBuyingAbility(event, "buy_mustafa_cow_art", "hamster-cow", 500000, 200, 9)
   }
 }
 function checkBuyingAbility(event, id, name, minus, plus, new_level) {
@@ -106,15 +106,13 @@ function checkBuyingAbility(event, id, name, minus, plus, new_level) {
     $("#current_money_show").text(
       `Current Money: ${localStorage.getItem("currentMoney") - minus}`
     );
-    localStorage.setItem("currentMoneyPerTap", plus);
-    $("#money_per_tap_text").text(
-      `Money per tap: ${localStorage.getItem("currentMoneyPerTap")}`
-    );
+    let bust = JSON.parse(localStorage.getItem("busters"));
     localStorage.setItem("currentCowLevel", new_level);
     localStorage.setItem(
       "currentMoney",
       localStorage.getItem("currentMoney") - minus
     );
+    localStorage.setItem('currentMoneyPerTap', Number(bust[2].bust) * Number(bust[1].bust) * Number(plus));
     $("#button_to_del").text();
     $(`#${id}`).attr("isBuying", true);
     $("#money_current_text").text(

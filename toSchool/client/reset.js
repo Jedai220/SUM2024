@@ -8,4 +8,17 @@ export function setDefaultBuyStatus() {
   $("#buy_kanabis_cow_art").attr("isBuying", false);
   $("#buy_miku_cow_art").attr("isBuying", false);
   $("#buy_mustafa_cow_art").attr("isBuying", false);
+
+  $("#buy_hay_art").css({
+    "background-image": 'url("../image/hay_ico.png")',
+  });
+  $("#buy_bucket_art").css({
+    "background-image": 'url("../image/bucket_ico.png")',
+  });
+  $("#buy_popularity_art").css({
+    "background-image": 'url("../image/popularity_ico.png")',
+  });
+  $("#buy_farmer_art").css({
+    "background-image": 'url("../image/farmer_ico.png")',
+  });
 }

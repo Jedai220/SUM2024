@@ -60,18 +60,19 @@ main {
   padding-right: 30px;
 }
 
-main,aside {
+main,
+aside {
   box-shadow: inset 3px 3px 15px black;
   background: linear-gradient(180deg, #e66465, #9198e5);
 }
 
 #earn {
   margin-bottom: 120px;
-} 
+}
 
 #buy {
-  margin-bottom : 120px;
-} 
+  margin-bottom: 120px;
+}
 
 #cow_stow {
   color: #ffa0ff;
@@ -81,7 +82,6 @@ main,aside {
   background-color: #ac243c;
   box-shadow: inset 2px 2px 10px black;
 }
-
 
 footer {
   grid-column: 1 / 4;
@@ -145,9 +145,8 @@ li > button > p {
 .tabLink {
   filter: brightness(70%);
   margin-left: 3px;
-  box-shadow: 4px 4px 15px black,
-              inset 2px 2px 10px gray, 
-              inset -2px -2px 10px gray;
+  box-shadow: 4px 4px 15px black, inset 2px 2px 10px gray,
+    inset -2px -2px 10px gray;
   width: 550px;
   border: 3px solid gray;
   border-radius: 700px;
@@ -168,7 +167,7 @@ li > button > p {
 
 .tabLink > p {
   font-size: 42px;
-  text-shadow: 2px 2px 3px black;  
+  text-shadow: 2px 2px 3px black;
 }
 
 #buy_cow:hover,
@@ -251,7 +250,7 @@ li > button > p {
 #earn {
   width: 100%;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 3fr;
   justify-content: center;
 }
 
@@ -285,11 +284,12 @@ li > button > p {
 }
 
 #cow_name {
+  justify-self: center;
+  height: 60px;
+  margin-top: 30px;
   border: 5px solid gray;
   text-shadow: 1px 1px 1px black;
-  box-shadow: inset 4px 0px 10px black,
-              inset -4px 0px 10px black,
-              1px 1px 20px black;
+  box-shadow: inset 4px 0px 10px black, inset -4px 0px 10px black;
 }
 
 .current_text > div {
@@ -297,6 +297,7 @@ li > button > p {
   box-shadow: inset 3px 3px 5px black;
   text-shadow: 1px 1px 1px black;
   width: 100%;
+
   border-radius: 80px;
   color: #eea5b4;
   background-color: #d15095;
@@ -307,9 +308,10 @@ li > button > p {
 #earn_button {
   background-color: transparent;
   border: none;
-  background-size: 380px 380px;
-  width: 380px;
-  height: 380px;
+  background-size: 320px 320px;
+  width: 320px;
+  height: 320px;
+  margin-top: 60px;
 }
 
 #earn_button:active {
@@ -336,6 +338,7 @@ li > button > p {
   animation-direction: alternate;
   user-select: none;
   opacity: 0%;
+  z-index: 1000;
 }
 
 #money_current_text,
@@ -351,7 +354,7 @@ li > button > p {
   font-size: 30px;
   color: brown;
   background-color: bisque;
-  width: 300px;
+  width: 380px;
   margin-bottom: 5px;
   justify-self: center;
   border-radius: 50px;
@@ -366,7 +369,8 @@ li > button > p {
   width: 100px;
 }
 
-#guide_button, #reset_button {
+#guide_button,
+#reset_button {
   border: 4px solid;
   border-color: coral;
   color: bisque;
@@ -375,15 +379,18 @@ li > button > p {
   border-radius: 30px;
 }
 
-#guide_button:hover, #reset_button:hover {
+#guide_button:hover,
+#reset_button:hover {
   cursor: pointer;
 }
 
-#guide_button:active, #reset_button:active {
+#guide_button:active,
+#reset_button:active {
   opacity: 50%;
 }
 
-#guide_content {
+#guide_content,
+#_guide_content {
   position: absolute;
   left: -1000px;
   top: 200px;
@@ -410,7 +417,8 @@ li > button > p {
   }
 }
 
-#guide_bg {
+#guide_bg,
+#_guide_bg {
   animation-name: toBgOpacity;
   animation-duration: 2s;
   animation-direction: alternate;
@@ -434,45 +442,48 @@ li > button > p {
   }
 }
 
-#close_bg_button, #close_bg_button2{
-    background-size: 128px 128px;
-    background-color: transparent;
-    border: none;
-    width: 128px;
-    height: 128px;
-    z-index: 999999999999999999999999999999999;
+#close_bg_button,
+#close_bg_button2,
+#_close_bg_button {
+  background-size: 128px 128px;
+  background-color: transparent;
+  border: none;
+  width: 128px;
+  height: 128px;
+  z-index: 999999999999999999999999999999999;
 }
 
-#close_bg_button {
-  background-image: url('../image/close_bg.png');
+#close_bg_button,
+#_close_bg_button {
+  background-image: url("../image/close_bg.png");
 }
 
 #close_bg_button2 {
-  background-image: url('../image/confirm_s.png');
+  background-image: url("../image/confirm_s.png");
 }
 
 #close_bg_button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-@keyframes _close_close_bg_button{
-    from {
-        opacity: 70%;
-    }
-    to {
-        opacity: 0%;
-        display: none;
-    }
+@keyframes _close_close_bg_button {
+  from {
+    opacity: 70%;
+  }
+  to {
+    opacity: 0%;
+    display: none;
+  }
 }
 
-@keyframes close_close_bg_button{
-    from {
-        opacity: 100%;
-    }
-    to {
-        opacity: 0%;
-        display: none;
-    }
+@keyframes close_close_bg_button {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+    display: none;
+  }
 }
 
 ._active {
@@ -510,7 +521,7 @@ button:active {
 #buy_default_cow_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/def_cow.png');
+  background-image: url("../image/def_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -539,7 +550,7 @@ button:active {
 #buy_radioactive_cow_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/radioactive_cow.png');
+  background-image: url("../image/radioactive_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -548,7 +559,7 @@ button:active {
 #udder_cow_buy_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/udder_cow.png');
+  background-image: url("../image/udder_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -561,6 +572,7 @@ button:active {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   margin-top: 20px;
+  transform: translate(-30px, 0);
   font-size: 24px;
   border-radius: 50px;
   text-align: center;
@@ -594,7 +606,15 @@ button:active {
   top: 0;
 }
 
-#default_cow_buy, #udder_cow_buy, #radioactive_cow_buy,  #pig_cow_buy, #mushroom_cow_buy, #ice_cow_buy, #kanabis_cow_buy, #miku_cow_buy, #mustafa_cow_buy{
+#default_cow_buy,
+#udder_cow_buy,
+#radioactive_cow_buy,
+#pig_cow_buy,
+#mushroom_cow_buy,
+#ice_cow_buy,
+#kanabis_cow_buy,
+#miku_cow_buy,
+#mustafa_cow_buy {
   max-width: 300px;
   justify-self: center;
   max-height: 300px;
@@ -603,7 +623,7 @@ button:active {
 #buy_pig_cow_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/pig_cow.png');
+  background-image: url("../image/pig_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -611,7 +631,7 @@ button:active {
 #buy_mushroom_cow_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/mushroom_cow.png');
+  background-image: url("../image/mushroom_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -619,7 +639,7 @@ button:active {
 #buy_ice_cow_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/ice_cow.png');
+  background-image: url("../image/ice_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -627,7 +647,7 @@ button:active {
 #buy_kanabis_cow_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/kanabis_cow.png');
+  background-image: url("../image/kanabis_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -635,7 +655,7 @@ button:active {
 #buy_miku_cow_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/miku_cow.png');
+  background-image: url("../image/miku_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -643,7 +663,7 @@ button:active {
 #buy_mustafa_cow_art {
   width: 200px;
   height: 130px;
-  background-image: url('../image/mustafa_cow.png');
+  background-image: url("../image/mustafa_cow.png");
   background-size: 200px 130px;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -673,13 +693,140 @@ button:active {
 }
 
 #button_to_del {
- align-self: flex-end;
- transform: translate(110px, -70px);
+  align-self: flex-end;
+  transform: translate(110px, -70px);
   /* grid-row: 2 / 3;
   grid-column: 2 / 3; */
 }
 
 #bust {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  padding-left: 100px;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+@keyframes toUp {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(0px, -50px);
+  }
+}
+
+@keyframes toDown {
+  from {
+    transform: translate(0px, -50px);
+  }
+  to {
+    transform: translate(0px, 0px);
+  }
+}
+
+#buy_hay_art {
+  background-image: url("../image/hay_ico.png");
+}
+
+#buy_farmer_art {
+  background-image: url("../image/farmer_ico.png");
+}
+
+#buy_bucket_art {
+  background-image: url("../image/bucket_ico.png");
+}
+
+#buy_popularity_art {
+  background-image: url("../image/popularity_ico.png");
+}
+
+#buy_farmer_art,
+#buy_bucket_art,
+#buy_popularity_art,
+#buy_hay_art {
+  background-size: 200px 200px;
+  width: 200px;
+  background-color: transparent;
+  height: 200px;
+}
+
+#farmer_earn > p,
+#bucket_earn > p {
+  background-color: pink;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 40px;
+  margin-right: 35px;
+  border: solid 2px brown;
+  color: #d15095;
+  text-shadow: 1px 1px 1px black;
+}
+
+#popularity_earn > p,
+#hay_earn > p {
+  background-color: pink;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 40px;
+  margin-right: 35px;
+  border: solid 2px #3c24ac;
+  color: #3080aa;
+  text-shadow: 1px 1px 1px black;
+}
+
+#farmer_earn {
+  margin-left: 50px;
+  background-size: 150px 150px;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  margin-top: 20px;
+  background-color: transparent;
+}
+
+#bucket_earn {
+  margin-top: 20px;
+  margin-left: 50px;
+  background-size: 150px 150px;
+  grid-column: 3 / 4;
+  background-color: transparent;
+  grid-row: 2 / 3;
+}
+
+#hay_earn {
+  margin-left: 50px;
+  background-size: 150px 150px;
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+  background-color: transparent;
+}
+
+#popularity_earn {
+  margin-left: 50px;
+  background-size: 150px 150px;
+  height: 300px;
+  grid-row: 3 / 4;
+  grid-column: 3 / 4;
+  background-color: transparent;
+}
+
+#header_img {
+  z-index: 999999999999999999999999999999999;
+}
+
+@keyframes toDialog {
+  from {
+    transform: translate(0px, 20px);
+  }
+  to {
+    transform: translate(498px, 170px);
+  }
+}
+
+@keyframes toLogo {
+  from {
+    transform: translate(498px, 170px);
+  }
+  to {
+    transform: translate(0px, 0px);
+  }
 }

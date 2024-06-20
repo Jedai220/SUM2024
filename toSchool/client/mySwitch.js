@@ -217,3 +217,35 @@ export function mySwitch() {
         }
       }    
 }
+
+export function mySwitch2(lvl) {
+  switch(lvl) {
+    case "1": {
+      return Number($('#def_cl').text());
+    }
+    case "2": {
+      return Number($('#ud_cl').text());
+    }
+    case "3": {
+      return Number($('#rad_cl').text());
+    }
+    case "4": {
+      return Number($('#pig_cl').text());
+    }
+    case "5": {
+      return Number($('#mus_cl').text());
+    }
+    case "6": {
+      return Number($('#ice_cl').text());
+    }
+    case "7": {
+      return Number($('#kan_cl').text());
+    }
+    case "8": {
+      return Number($('#mik_cl').text());
+    }
+    case "9": {
+      return Number($('#mus2_cl').text());
+    }
+  }
+}

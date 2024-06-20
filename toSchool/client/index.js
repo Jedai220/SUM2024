@@ -1,9 +1,14 @@
 import { getPlus1 } from "./earn-system.js";
+import { onClickBuyBust } from "./bust_buy.js";
 import { UseGuide } from "./guide.js";
 import { onClickBuyCow } from "./cow_buy.js";
 import { setDefaultBuyStatus } from "./reset.js";
-import { mySwitch } from "./mySwitch.js";
+import { mySwitch, mySwitch2 } from "./mySwitch.js";
+import { setDefLevelBust } from "./earn-system.js";
 import "./cow_buy.js";
+
+import './story.js';
+import { startStory } from "./story.js";
 
 let isShowMoney = false;
 let currentArt = "null";
@@ -13,26 +18,31 @@ const ws = new WebSocket("ws://localhost:8080");
 
 let isConf = "null";
 
-ws.onmessage = (msg) => { 
+ws.onmessage = (msg) => {
   inputChecker(msg);
 };
 
 function ResetAll() {
+  localStorage.setItem("busters", JSON.stringify(setDefLevelBust()));
   localStorage.setItem("currentMoneyPerTap", 1);
   localStorage.setItem("currentMoney", 0);
-  localStorage.setItem("currentInflows", 1);
+  localStorage.setItem("currentInflows", 0);
   localStorage.setItem("currentCowLevel", 1);
 
-  $("#money_current_text").text(
-    `Current money: ${localStorage.getItem("currentMoney")}`
-  );
+  let buster = JSON.parse(localStorage.getItem("busters"));
+
   $("#money_per_min_text").text(
     `Inflows per min: ${localStorage.getItem("currentInflows")}`
   );
   $("#money_per_tap_text").text(
-    `Money per tap: ${localStorage.getItem("currentMoneyPerTap")}`
+    `Money per tap: ${
+      localStorage.getItem("currentMoneyPerTap") /
+      (Number(buster[1].bust) * Number(buster[2].bust))
+    } * ${Number(buster[1].bust) * Number(buster[2].bust)}`
   );
-
+  $("#money_current_text").text(
+    `Current money: ${localStorage.getItem("currentMoney")}`
+  );
   $("#earn_button").css({
     "background-image": 'url("../image/first_cow.png")',
   });
@@ -44,6 +54,7 @@ function ResetAll() {
   );
   setDefaultImage();
   setDefaultBuyStatus();
+  startStory();
 }
 
 function checkerReset() {
@@ -127,7 +138,7 @@ function switchPage(event, pageName) {
   }
   if (currentLink == null) {
     currentLink = event.currentTarget.id;
-    $('#' + currentLink).css({'animation': '1s 1 alternate toRight'});
+    $("#" + currentLink).css({ animation: "1s 1 alternate toRight" });
   }
 
   if (pageName != "earn" && isShowMoney == false) {
@@ -149,8 +160,8 @@ function switchPage(event, pageName) {
   $(".tabLink").prop("disabled", true);
   $(".tabContent").prop("disabled", true);
   $("#" + currentArt).slideUp(1000);
-  $('#' + currentLink).css({'animation': '1s 1 alternate toLeft'});
-  $('#' + currentLink).css({'transform': 'translate(0px)'});
+  $("#" + currentLink).css({ animation: "1s 1 alternate toLeft" });
+  $("#" + currentLink).css({ transform: "translate(0px)" });
 
   setTimeout(() => {
     $("#" + pageName).slideDown(1000);
@@ -166,12 +177,16 @@ function switchPage(event, pageName) {
       $("#" + event.currentTarget.id).css("background-color")
     );
     $(".tabLink").prop("disabled", false);
-    $("#" + currentLink).css({'animation': '1s 1 alternate toRight'}, {'animation-fill-mode': 'forwards'});
-    $("#" + currentLink).css({'transform': 'translate(80px)'});
+    $("#" + currentLink).css(
+      { animation: "1s 1 alternate toRight" },
+      { "animation-fill-mode": "forwards" }
+    );
+    $("#" + currentLink).css({ transform: "translate(80px)" });
   }, 1000);
 }
 
 ws.onopen = () => {
+  let buster = JSON.parse(localStorage.getItem("busters"));
   $(".tabContent").css({ display: "grid" });
   $(".tabContent").hide();
 
@@ -187,7 +202,9 @@ ws.onopen = () => {
     `Inflows per min: ${localStorage.getItem("currentInflows")}`
   );
   $("#money_per_tap_text").text(
-    `Money per tap: ${localStorage.getItem("currentMoneyPerTap")}`
+    `Money per tap: ${mySwitch2(
+      String(localStorage.getItem("currentCowLevel"))
+    )} * ${Number(buster[1].bust) * Number(buster[2].bust)}`
   );
   mySwitch();
   if ($("#default_cow_buy").attr("isBuying") == undefined) {
@@ -220,7 +237,146 @@ ws.onopen = () => {
 };
 
 setInterval(() => {
+  let buster = JSON.parse(localStorage.getItem("busters"));
+
+  $("#money_per_min_text").text(
+    `Inflows per min: ${localStorage.getItem("currentInflows")}
+    `
+  );
+  $("#money_per_tap_text").text(
+    `Money per tap: ${mySwitch2(
+      String(localStorage.getItem("currentCowLevel"))
+    )} * ${Number(buster[1].bust) * Number(buster[2].bust)}`
+  );
+  $("#money_current_text").text(
+    `Current money: ${localStorage.getItem("currentMoney")}`
+  );
+}, 200);
+
+setInterval(() => {
+  let buster = JSON.parse(localStorage.getItem("busters"));
+
+  if (currentArt == "bust") {
+    $("#hay_level").text(
+      "Current level: " + (Number(buster[3].currentLevel) - 1)
+    );
+    $("#bucket_level").text(
+      "Current level: " + (Number(buster[1].currentLevel) - 1)
+    );
+    $("#popularity_level").text(
+      "Current level: " + (Number(buster[2].currentLevel) - 1)
+    );
+    $("#farmer_level").text(
+      "Current level: " + (Number(buster[0].currentLevel) - 1)
+    );
+
+    $("#hay_type").text(`Current ${buster[3].type}: ${buster[3].bust}`);
+    $("#bucket_type").text(`Current ${buster[1].type}: ${buster[1].bust}`);
+    $("#popularity_type").text(`Current ${buster[2].type}: ${buster[2].bust}`);
+    $("#farmer_type").text(`Current ${buster[0].type}: ${buster[0].bust}`);
+
+    if (Number(buster[3].currentLevel) < 4) {
+      $("#hay_price").text(
+        `Current price: ${Number(buster[3].currentLevel) * 500}`
+      );
+    } else {
+      $("#hay_price").text(`Current price: no price (max level)`);
+      $("#buy_hay_art").css({
+        "background-image": 'url("../image/hay_ico_sold.png")',
+      });
+    }
+    if (Number(buster[1].currentLevel) < 4) {
+      $("#bucket_price").text(
+        `Current price: ${Number(buster[1].currentLevel) * 100}`
+      );
+    } else {
+      $("#bucket_price").text(`Current price: no price (max level)`);
+      $("#buy_bucket_art").css({
+        "background-image": 'url("../image/bucket_ico_sold.png")',
+      });
+    }
+    if (Number(buster[2].currentLevel) < 4) {
+      $("#popularity_price").text(
+        `Current price: ${Number(buster[2].currentLevel) * 400}`
+      );
+    } else {
+      $("#popularity_price").text(`Current price: no price (max level)`);
+      $("#buy_popularity_art").css({
+        "background-image": 'url("../image/popularity_ico_sold.png")',
+      });
+    }
+    if (Number(buster[0].currentLevel) < 4) {
+      $("#farmer_price").text(
+        `Current price: ${Number(buster[0].currentLevel) * 200}`
+      );
+    } else {
+      $("#farmer_price").text(`Current price: no price (max level)`);
+      $("#buy_farmer_art").css({
+        "background-image": 'url("../image/farmer_ico_sold.png")',
+      });
+    }
+  }
   mySwitch();
+}, 1);
+
+setInterval(() => {
+  if (currentArt == "earn") {
+    let busters = JSON.parse(localStorage.getItem("busters"));
+    if (Number(busters[0].currentLevel) > 1) {
+      $("#farmer_earn").css({
+        "display": "block",
+      });
+      $("#farmer_earn").css({
+        "background-image": "url(./image/farmer_ico.png)",
+      });
+      $("#farm_level").text(
+        `Current "farmer" level: ${Number(busters[0].currentLevel) - 1}`
+      );
+    } else {
+      $("#farmer_earn").css({
+        "display": "none",
+      });
+    }
+    if (Number(busters[1].currentLevel) > 1) {
+      $("#bucket_earn").css({
+        "display": "block",
+      });
+      $("#bucket_earn").css({
+        "background-image": "url(./image/bucket_ico.png)",
+      });
+      $("#buck_level").text(
+        `Current "bucket" level: ${Number(busters[1].currentLevel) - 1}`
+      );
+    } else {
+      $("#bucket_earn").css({
+        "display": "none",
+      });
+    }
+    if (Number(busters[2].currentLevel) > 1) {
+      $("#popularity_earn").css({
+        "display": "block",
+      });
+      $("#popularity_earn").css({
+        "background-image": "url(./image/popularity_ico.png)",
+      });
+      $("#pop_level").text(
+        `Current "popularity" level: ${Number(busters[2].currentLevel) - 1}`
+      );
+    } else {
+      $("#popularity_earn").css({
+        "display": "none",
+      });
+    }
+    if (Number(busters[3].currentLevel) > 1) {
+      $("#hay_earn").css({ "display": "block" });
+      $("#hay_earn").css({ "background-image": "url(./image/hay_ico.png)" });
+      $("#hay_level").text(
+        `Current "hay" level: ${Number(busters[3].currentLevel) - 1}`
+      );
+    } else {
+      $("#hay_earn").css({ 'display': "none" });
+    }
+  }
 }, 1);
 
 $("#buy_cow").on("click", (event) => {
@@ -240,6 +396,9 @@ $("#guide_button").on("click", (event) => {
 });
 $(".buy_cow_uni_class").on("click", (event) => {
   onClickBuyCow(event);
+});
+$(".buy_bust_uni_class").on("click", (event) => {
+  onClickBuyBust(event);
 });
 $("#reset_button").on("click", () => {
   checkerReset();
