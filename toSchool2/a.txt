@@ -1,0 +1,1 @@
+"{"currentLevel":1,"name":"farmer","type":"inflows","bust":"0"},{"currentLevel":1,"name":"bucket","type":"multiple","bust":"1"},{"currentLevel":1,"name":"popularity","type":"multiple","bust":"1"},{"currentLevel":1,"name":"hay","type":"inflows","bust":"0"}"
