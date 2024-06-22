@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COW-STOW</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="shortcut icon" href="./image/cow_logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./index.js" type="module"></script>
+  </head>
+  <body>
+    <div id="delete_it"></div>
+    <div id="all_wrapper" class="wrapper">
+      <header class="wrapper">
+        <div id="all_header" class="wrapper">
+          <div id="header_img">
+            <img
+              id="header_img_art"
+              src="./image/def_cow.png"
+              alt="cow_stow logo"
+            />
+          </div>
+          <div id="header_content" class="wrapper">
+            <p id="cow_stow">COW-STOW</p>
+          </div>
+          <div id="utiliti_buttons">
+            <div id="guide_case">
+              <button id="guide_button">!!!GUIDE!!!</button>
+            </div>
+            <div id="reset_all">
+              <button id="reset_button">!!!RESET!!!</button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div id="aside_main">
+        <aside class="wrapper">
+          <ul id="button_list">
+            <li id="first_switch">
+              <button id="buy_cow" class="tabLink">
+                <p>Buy cow</p>
+              </button>
+            </li>
+            <li>
+              <button id="buy_bust" class="tabLink">
+                <p>Buy busters</p>
+              </button>
+            </li>
+            <li>
+              <button id="buy_earn" class="tabLink">
+                <p>Earn money</p>
+              </button>
+            </li>
+            <li>
+              <button id="buy_music" class="tabLink">
+                <p>Music</p>
+              </button>
+            </li>
+          </ul>
+        </aside>
+        <main class="wrapper">
+          <!--! EARN MONEY DESCRIPTION  -->
+          <article class="tabContent" id="earn" style="display: none">
+            <div id="farmer_earn">
+              <p style="margin-top: 158px" id="farm_level"></p>
+            </div>
+            <div id="bucket_earn">
+              <p style="margin-top: 158px" id="buck_level"></p>
+            </div>
+            <div id="popularity_earn">
+              <p style="margin-top: 158px" id="pop_level"></p>
+            </div>
+            <div id="hay_earn">
+              <p style="margin-top: 158px" id="hay_level"></p>
+            </div>
+            <div id="money_per_minute" class="current_text">
+              <div>
+                <p id="money_per_min_text">Inflows per min:</p>
+              </div>
+            </div>
+            <div id="money_current" class="current_text">
+              <div>
+                <p id="money_current_text">Current money:</p>
+              </div>
+            </div>
+            <div id="money_per_tap" class="current_text">
+              <div>
+                <p id="money_per_tap_text">Money per tap:</p>
+              </div>
+            </div>
+            <div id="earn_wrapper">
+              <button id="earn_button"></button>
+            </div>
+            <div id="cow_name"></div>
+          </article>
+          <!--! COW BUY DESCRIPTION  -->
+          <article id="buy" class="tabContent">
+            <div id="default_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="buy_default_cow_art"
+                style="align-self: center"
+              ></button>
+              <p class="def_p">Price: free</p>
+              <p class="def_p">
+                Money per click: <span id="def_cl">1</span>
+              </p>
+              <p class="def_p">Name: default cow</p>
+            </div>
+            <div id="udder_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="udder_cow_buy_art"
+                style="align-self: center"
+              ></button>
+              <p class="ud_p" >Price: 400</p>
+              <p class="ud_p" >
+                Money per click: <span id="ud_cl">3</span>
+              </p>
+              <p class="ud_p" >Name: udder cow</p>
+            </div>
+            <div id="radioactive_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="buy_radioactive_cow_art"
+                style="align-self: center"
+              ></button>
+              <p class="rad_p" >Price: 3000</p>
+              <p class="rad_p" >
+                Money per click: <span id="rad_cl">10</span>
+              </p>
+              <p class="rad_p" >
+                Name: radioactive cow
+              </p>
+            </div>
+            <div id="pig_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="buy_pig_cow_art"
+                style="align-self: center"
+              ></button>
+              <p class="pig_p" >Price: 8200</p>
+              <p class="pig_p">
+                Money per click: <span id="pig_cl">15</span>
+              </p>
+              <p class="pig_p">Name: pig-cow</p>
+            </div>
+            <div id="mushroom_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="buy_mushroom_cow_art"
+                style="align-self: center"
+              ></button>
+              <p class="mush_p">Price: 15000</p>
+              <p class="mush_p">
+                Money per click: <span id="mus_cl">30</span>
+              </p>
+              <p class="mush_p">
+                Name: mushroom cow
+              </p>
+            </div>
+            <div id="ice_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="buy_ice_cow_art"
+                style="align-self: center"
+              ></button>
+              <p class="ice_p" >Price: 30000</p>
+              <p class="ice_p">
+                Money per click: <span id="ice_cl">50</span>
+              </p>
+              <p class="ice_p" >Name: ice cow</p>
+            </div>
+            <div id="kanabis_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="buy_kanabis_cow_art"
+                style="align-self: center"
+              ></button>
+              <p class="kan_p" >Price: 50000</p>
+              <p class="kan_p" >
+                Money per click: <span id="kan_cl">80</span>
+              </p>
+              <p class="kan_p" >Name: old cow-ban</p>
+            </div>
+            <div id="miku_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="buy_miku_cow_art"
+                style="align-self: center"
+              ></button>
+              <p class="miku_p" >Price: 100000</p>
+              <p class="miku_p">
+                Money per click: <span id="mik_cl">100</span>
+              </p>
+              <p class="miku_p">Name: miku cow</p>
+            </div>
+            <div id="mustafa_cow_buy">
+              <button
+                class="buy_cow_uni_class"
+                id="buy_mustafa_cow_art"
+                style="align-self: center"
+              ></button>
+              <p class="must_p">Price: 500000</p>
+              <p class="must_p">
+                Money per click: <span id="mus2_cl">200</span>
+              </p>
+              <p class="must_p">Name: hamster-cow</p>
+            </div>
+          </article>
+          <!--! BUSTER DESCRIPTION  -->
+          <article id="bust" class="tabContent">
+            <div id="farmer_buy">
+              <button
+                class="buy_bust_uni_class"
+                id="buy_farmer_art"
+                style="align-self: center"
+              ></button>
+              <p
+                id="farmer_price"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Price: 200
+              </p>
+              <p
+                id="farmer_type"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current money multiple: 1
+              </p>
+              <p
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Name: farmer
+              </p>
+              <p
+                id="farmer_level"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current level:
+              </p>
+              <p
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Max level: 3
+              </p>
+            </div>
+            <div id="bucket_buy">
+              <button
+                class="buy_bust_uni_class"
+                id="buy_bucket_art"
+                style="align-self: center"
+              ></button>
+              <p
+                id="bucket_price"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Price: 100
+              </p>
+              <p
+                id="bucket_type"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current money multiple: 1
+              </p>
+              <p
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Name: bucket
+              </p>
+              <p
+                id="bucket_level"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current level:
+              </p>
+              <p
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Max level: 3
+              </p>
+            </div>
+            <div id="popularity_buy">
+              <button
+                class="buy_bust_uni_class"
+                id="buy_popularity_art"
+                style="align-self: center"
+              ></button>
+              <p
+                id="popularity_price"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Price: 100
+              </p>
+              <p
+                id="popularity_type"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current money multiple: 1
+              </p>
+              <p
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Name: popularity
+              </p>
+              <p
+                id="popularity_level"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current level:
+              </p>
+              <p
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Max level: 3
+              </p>
+            </div>
+            <div id="hay_buy">
+              <button
+                class="buy_bust_uni_class"
+                id="buy_hay_art"
+                style="align-self: center"
+              ></button>
+              <p
+                id="hay_price"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Price: 100
+              </p>
+              <p
+                id="hay_type"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current money multiple: 1
+              </p>
+              <p
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Name: hay
+              </p>
+              <p
+                id="hay_level"
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Current level:
+              </p>
+              <p
+                style="
+                  color: turquoise;
+                  font-size: 20px;
+                  text-shadow: 1px 1px 1px black;
+                "
+              >
+                Max level: 3
+              </p>
+            </div>
+          </article>
+          <!--! Audio article descrition-->
+          <article id="audi" class="tabContent">
+            <!--* track description *-->
+            <audio id="track_1" loop="loop" src="./audio/pop.mp3"></audio>
+
+            <!--* button dscription *-->
+            <button id="popipo" class="track_button">Po Pi Po</button>
+            <button id="forest" class="track_button">Forest</button>
+            <button id="coi" class="track_button">Eighth grader (choi)</button>
+            <button id="prestol" class="track_button">Game of thrones</button>
+            <button id="phonk" class="track_button">Close Eye <br> (DVRST)</button>
+            <button id="billi" class="track_button">Billi Jin</button>
+            <button id="strekoza" class="track_button">
+              dragonfly of love
+            </button>
+            <div id="utility_misc">
+              <button id="random" class="track_button">random Music</button>
+              <button
+                id="p_p"
+                aria-checked="false"
+                role="switch"
+                data-playing="false"
+                class="track_button"
+              >
+                Play/Pause
+              </button>
+              <input type="range" class="slider" name="" id="volume" />
+              <p
+              id="vol_text"
+                style="
+                  width: 100%;
+                  font-size: 24px;
+                  text-align: center;
+                  grid-column: 1/3;
+                "
+              >
+                Volume: 50%
+              </p>
+            </div>
+            <button id="snoop" class="track_button">Snoop-dog</button>
+            <audio src=""></audio>
+          </article>
+        </main>
+      </div>
+      <footer class="wrapper">
+        <ul id="footer_list">
+          <a id="footer_con" target="_blank" href="https://github.com/Jedai220"
+            >My github</a
+          >
+        </ul>
+      </footer>
+    </div>
+  </body>
+</html>
